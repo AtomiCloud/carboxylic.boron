@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>CarboxylicBoron</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Description>IDomainProblem is a standardize domain error framework that follows ProblemDetails (RFC 7808)</Description>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryUrl>RepositoryUrl</RepositoryUrl>
+    <Authors>Ernest Ng</Authors>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <PackageId>AtomiCloud.IDomainProblem</PackageId>
+    <PackageReadmeFile>README.MD</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\README.MD" Pack="true" PackagePath="\"/>
+    <None Include="..\LICENSE" Pack="true" PackagePath="\"/>
+    <None Include="..\logo.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NJsonSchema" Version="11.1.0" />
+  </ItemGroup>
+</Project>
