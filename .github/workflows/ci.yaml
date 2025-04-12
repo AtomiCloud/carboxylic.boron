@@ -16,7 +16,7 @@ jobs:
       - nscloud-git-mirror-1gb
     steps:
       # Setup
-      - uses: AtomiCloud/actions.setup-nix@v1
+      - uses: AtomiCloud/actions.setup-nix@v2
       - uses: AtomiCloud/actions.cache-nuget@v1
 
       # Pre Commit
@@ -32,7 +32,7 @@ jobs:
       - nscloud-git-mirror-1gb
     steps:
       # Setup
-      - uses: AtomiCloud/actions.setup-nix@v1
+      - uses: AtomiCloud/actions.setup-nix@v2
       - uses: AtomiCloud/actions.cache-nuget@v1
 
       # Test
@@ -53,7 +53,7 @@ jobs:
       - nscloud-git-mirror-1gb
     steps:
       # Setup
-      - uses: AtomiCloud/actions.setup-nix@v1
+      - uses: AtomiCloud/actions.setup-nix@v2
       - uses: AtomiCloud/actions.cache-npm@v1
       - uses: AtomiCloud/actions.cache-nuget@v1
 
