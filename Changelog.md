@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/AtomiCloud/carboxylic.boron/compare/v1.3.0...v1.3.1) (2025-04-13)
+
+
+### 🐛 Bug Fixes 🐛
+
+* remove token & fix badge ([9f33d70](https://github.com/AtomiCloud/carboxylic.boron/commit/9f33d70274c2a0976219fb69899a8be2751fb9b9))
+
 ## [1.3.0](https://github.com/AtomiCloud/carboxylic.boron/compare/v1.2.0...v1.3.0) (2025-04-13)
 
 
