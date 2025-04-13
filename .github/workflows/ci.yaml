@@ -8,7 +8,7 @@ env:
 
 jobs:
   precommit:
-    name: Pre-commit Check
+    name: Pre-commit
     runs-on:
       - nscloud-ubuntu-22.04-amd64-4x8-with-cache
       - nscloud-cache-size-50gb
@@ -16,7 +16,7 @@ jobs:
       - nscloud-git-mirror-1gb
     steps:
       # Setup
-      - uses: AtomiCloud/actions.setup-nix@v1
+      - uses: AtomiCloud/actions.setup-nix@v2
       - uses: AtomiCloud/actions.cache-nuget@v1
 
       # Pre Commit
@@ -24,7 +24,7 @@ jobs:
         run: nix develop .#ci -c ./scripts/ci/pre-commit.sh
 
   test:
-    name: Test and Coverage
+    name: Tests
     runs-on:
       - nscloud-ubuntu-22.04-amd64-4x8-with-cache
       - nscloud-cache-size-50gb
@@ -32,7 +32,7 @@ jobs:
       - nscloud-git-mirror-1gb
     steps:
       # Setup
-      - uses: AtomiCloud/actions.setup-nix@v1
+      - uses: AtomiCloud/actions.setup-nix@v2
       - uses: AtomiCloud/actions.cache-nuget@v1
 
       # Test
@@ -53,7 +53,10 @@ jobs:
       - nscloud-git-mirror-1gb
     steps:
       # Setup
-      - uses: AtomiCloud/actions.setup-nix@v1
+      - uses: AtomiCloud/actions.setup-nix@v2
+        with:
+          auth-bot-app-id: ${{ vars.AUTH_BOT_APP_ID }}
+          auth-bot-secret-key: ${{ secrets.AUTH_BOT_SECRET_KEY }}
       - uses: AtomiCloud/actions.cache-npm@v1
       - uses: AtomiCloud/actions.cache-nuget@v1
 
