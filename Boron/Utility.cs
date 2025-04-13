@@ -9,7 +9,6 @@ public static class Utility
     /// <returns></returns>
     public static DomainProblemException ToException(this IDomainProblem p)
     {
-        Console.WriteLine($"Test Code Quality");
         return new DomainProblemException(p);
     }
 }

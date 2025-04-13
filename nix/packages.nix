@@ -19,7 +19,6 @@ let
       {
 
         dotnet = dotnet-sdk_9;
-        jdk = zulu17;
 
         inherit
           xmlstarlet
