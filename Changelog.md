@@ -1,3 +1,21 @@
+## [1.4.0](https://github.com/AtomiCloud/carboxylic.boron/compare/v1.3.1...v1.4.0) (2025-04-16)
+
+
+### ✨ Features ✨
+
+* **default:** migrate to modern configuration ([5b19a1d](https://github.com/AtomiCloud/carboxylic.boron/commit/5b19a1d2f1803c59004cbf910c9917065d424cc2))
+
+
+### 🐛 Bug Fixes 🐛
+
+* **default:** incorrect action name ([5e9bb12](https://github.com/AtomiCloud/carboxylic.boron/commit/5e9bb121542b6efc7bd5c5eb3e1f3e9cba4c5e85))
+* **default:** missing JunitXml Test logger ([a482a97](https://github.com/AtomiCloud/carboxylic.boron/commit/a482a97cf1d1c48ac8e19def116d255eabf686d8))
+
+
+### 🔼 Dependency Upstreams 🔼
+
+* **default:** downgrade to dotnet 8 ([6b8003e](https://github.com/AtomiCloud/carboxylic.boron/commit/6b8003e2f5edba09197b162155e11cea35b124a0))
+
 ## [1.3.1](https://github.com/AtomiCloud/carboxylic.boron/compare/v1.3.0...v1.3.1) (2025-04-13)
 
 
