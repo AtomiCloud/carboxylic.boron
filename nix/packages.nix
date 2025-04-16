@@ -18,7 +18,7 @@ let
       with pkgs-2411;
       {
 
-        dotnet = dotnet-sdk_9;
+        dotnet = dotnet-sdk;
 
         inherit
           xmlstarlet
