@@ -32,13 +32,13 @@ plugins:
   - module: '@semantic-release/exec'
     version: 6.0.3
     config:
-      prepareCmd: scripts/ci/update_version.sh ${nextRelease.version}
+      prepareCmd: scripts/ci/update_version.sh ${nextRelease.version} Boron
 
   # Commit Additional Changes & Artifacts
   - module: '@semantic-release/git'
     version: 10.0.1
     config:
-      message: "release: ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      message: "release(no-release): ${nextRelease.version}\n\n${nextRelease.notes}"
       assets:
         - Changelog.md
         - docs/developer/CommitConventions.md

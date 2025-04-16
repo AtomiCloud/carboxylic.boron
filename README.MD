@@ -1,5 +1,6 @@
 # IDomainProblem
 
+[![codecov](https://codecov.io/gh/AtomiCloud/carboxylic.boron/graph/badge.svg)](https://codecov.io/gh/AtomiCloud/carboxylic.boron)
 [![DeepSource](https://app.deepsource.com/gh/AtomiCloud/carboxylic.boron.svg/?label=active+issues)](https://app.deepsource.com/gh/AtomiCloud/carboxylic.boron/)
 [![GitHub Release Date](https://img.shields.io/github/release-date/AtomiCloud/carboxylic.boron)](https://github.com/AtomiCloud/carboxylic.boron/releases)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/AtomiCloud/carboxylic.boron)](https://github.com/AtomiCloud/carboxylic.boron/commits/main)
