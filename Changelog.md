@@ -1,3 +1,16 @@
+## [1.5.0](https://github.com/AtomiCloud/carboxylic.boron/compare/v1.4.0...v1.5.0) (2025-04-22)
+
+
+### ✨ Features ✨
+
+* **ci:** abstract variables for CI ([a58630e](https://github.com/AtomiCloud/carboxylic.boron/commit/a58630e76f45b52492a674138601f818b38e7e40))
+
+
+### 🐛 Bug Fixes 🐛
+
+* **default:** incorrect reference to label instead of env ([13c45e2](https://github.com/AtomiCloud/carboxylic.boron/commit/13c45e26fc2da6c2fc270232af768fbc6bb1198b))
+* **default:** use lowercase for nscloud labels ([3cec374](https://github.com/AtomiCloud/carboxylic.boron/commit/3cec374d95ef26754fa683a834f9bcd2a8dae545))
+
 ## [1.4.0](https://github.com/AtomiCloud/carboxylic.boron/compare/v1.3.1...v1.4.0) (2025-04-16)
 
 
