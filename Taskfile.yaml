@@ -1,7 +1,16 @@
 version: '3'
 
 includes:
-  test: tasks/Taskfile.test.yaml
+  unit:
+    taskfile: tasks/Taskfile.test.yaml
+    vars:
+      TEST_DIR: UnitTest
+      TARGET: Boron
+  int:
+    taskfile: tasks/Taskfile.test.yaml
+    vars:
+      TEST_DIR: IntTest
+      TARGET: Boron
 
 env:
   ATOMI_SERVICE: Boron
@@ -11,9 +20,15 @@ tasks:
     desc: 'Setup the repository'
     cmds:
       - dotnet restore
+      - dotnet tool restore
       - ./scripts/local/secrets.sh
 
   build:
     desc: 'Build the library'
     cmds:
       - dotnet build
+
+  deps:
+    desc: 'Update all dependencies'
+    cmds:
+      - dotnet outdated -u:prompt

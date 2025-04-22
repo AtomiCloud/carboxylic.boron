@@ -1,26 +1,17 @@
 version: '3'
 
-vars:
-  UNIT_TEST_DIR: UnitTest
-  UNIT_TEST_TARGETS: Boron
-
 tasks:
   default:
-    desc: 'Unit Test the library'
+    desc: '{{.TEST_DIR}} Test the library'
     cmds:
-      - task: unit:watch
+      - dotnet test {{.TEST_DIR}} {{.CLI_ARGS}}
 
-  unit:
-    desc: 'Unit Test the library'
+  watch:
+    desc: '{{.TEST_DIR}} Test the library and watch for changes'
     cmds:
-      - dotnet test {{.UNIT_TEST_DIR}} {{.CLI_ARGS}}
+      - dotnet watch test --project {{.TEST_DIR}} {{.CLI_ARGS}}
 
-  unit:watch:
-    desc: 'Unit Test the library and watch for changes'
+  cover:
+    desc: '{{.TEST_DIR}} Test the library and show coverage'
     cmds:
-      - dotnet watch test --project {{.UNIT_TEST_DIR}} {{.CLI_ARGS}}
-
-  unit:cover:
-    desc: 'Unit Test the library and show coverage'
-    cmds:
-      - ./scripts/local/cover.sh {{.UNIT_TEST_DIR}} {{.UNIT_TEST_TARGETS}}
+      - ./scripts/local/cover.sh {{.TEST_DIR}} {{.TARGET}} {{.CLI_ARGS}}
