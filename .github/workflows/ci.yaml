@@ -53,7 +53,7 @@ jobs:
 
       # Coverage
       - name: Get UnitTest Coverage
-        run: nix develop .#ci -c ./scripts/local/cover.sh UnitTest ${{ vars.TARGETS }}
+        run: nix develop .#ci -c ./scripts/local/cover.sh UnitTest ${{ env.TARGETS }}
 
       # Connect to Codecov
       - name: Upload coverage reports to Codecov
