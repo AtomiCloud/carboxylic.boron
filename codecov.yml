@@ -6,7 +6,7 @@ coverage:
         target: 80%
         threshold: 1%
         flags:
-          - unit
+          - UnitTest
 comment:
   layout: 'header, diff, flags, files, tree, footer'
   behavior: default
