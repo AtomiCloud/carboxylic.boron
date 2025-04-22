@@ -4,7 +4,7 @@ on:
   push:
 
 env:
-  ATOMI_SERVICE: Boron
+  TARGETS: Boron
 
 jobs:
   precommit:
@@ -23,12 +23,12 @@ jobs:
       - name: Run pre-commit
         run: nix develop .#ci -c ./scripts/ci/pre-commit.sh
 
-  unit-test:
-    name: Unit Tests
+  test:
+    name: UnitTest
     runs-on:
       - nscloud-ubuntu-22.04-amd64-4x8-with-cache
       - nscloud-cache-size-50gb
-      - nscloud-cache-tag-carboxylic-boron-unit-test-cache
+      - nscloud-cache-tag-carboxylic-boron-UnitTest-test-cache
       - nscloud-git-mirror-1gb
     steps:
       # Setup
@@ -39,12 +39,12 @@ jobs:
       - name: Run Test
         run: nix develop .#ci -c ./scripts/ci/test.sh UnitTest
 
-  unit-test-coverage:
-    name: Unit Test Coverage
+  coverage:
+    name: UnitTest Coverage
     runs-on:
       - nscloud-ubuntu-22.04-amd64-4x8-with-cache
       - nscloud-cache-size-50gb
-      - nscloud-cache-tag-carboxylic-boron-unit-test-coverage-cache
+      - nscloud-cache-tag-carboxylic-boron-UnitTest-coverage-cache
       - nscloud-git-mirror-1gb
     steps:
       # Setup
@@ -52,8 +52,8 @@ jobs:
       - uses: AtomiCloud/actions.cache-nuget@v1
 
       # Coverage
-      - name: Get Unit Test Coverage
-        run: nix develop .#ci -c ./scripts/local/cover.sh UnitTest Boron
+      - name: Get UnitTest Coverage
+        run: nix develop .#ci -c ./scripts/local/cover.sh UnitTest ${{ vars.TARGETS }}
 
       # Connect to Codecov
       - name: Upload coverage reports to Codecov
@@ -64,4 +64,4 @@ jobs:
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/UnitTest/coverage.cobertura.xml
-          flags: unit
+          flags: UnitTest
