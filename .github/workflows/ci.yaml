@@ -28,7 +28,7 @@ jobs:
     runs-on:
       - nscloud-ubuntu-22.04-amd64-4x8-with-cache
       - nscloud-cache-size-50gb
-      - nscloud-cache-tag-carboxylic-boron-UnitTest-test-cache
+      - nscloud-cache-tag-carboxylic-boron-unittest-test-cache
       - nscloud-git-mirror-1gb
     steps:
       # Setup
@@ -44,7 +44,7 @@ jobs:
     runs-on:
       - nscloud-ubuntu-22.04-amd64-4x8-with-cache
       - nscloud-cache-size-50gb
-      - nscloud-cache-tag-carboxylic-boron-UnitTest-coverage-cache
+      - nscloud-cache-tag-carboxylic-boron-unittest-coverage-cache
       - nscloud-git-mirror-1gb
     steps:
       # Setup
