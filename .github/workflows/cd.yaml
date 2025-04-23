@@ -1,0 +1,16 @@
+name: CD
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  publish:
+    name: Publish NuGet Package
+    uses: ./.github/workflows/reusable-cd.yaml
+    secrets: inherit
+    with:
+      atomi_platform: carboxylic
+      atomi_service: boron
+      target: Boron

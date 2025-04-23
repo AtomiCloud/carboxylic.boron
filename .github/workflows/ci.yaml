@@ -1,77 +1,33 @@
-name: CI-CD
+name: CI
 
 on:
   push:
 
-env:
-  ATOMI_SERVICE: Boron
-
 jobs:
   precommit:
     name: Pre-Commit
-    runs-on:
-      - nscloud-ubuntu-22.04-amd64-4x8-with-cache
-      - nscloud-cache-size-50gb
-      - nscloud-cache-tag-carboxylic-boron-nix-store-cache
-      - nscloud-git-mirror-1gb
-    steps:
-      # Setup
-      - uses: AtomiCloud/actions.setup-nix@v2
-      - uses: AtomiCloud/actions.cache-nuget@v1
+    uses: ./.github/workflows/reusable-precommit.yaml
+    secrets: inherit
+    with:
+      atomi_platform: carboxylic
+      atomi_service: boron
 
-      # Pre Commit
-      - name: Run pre-commit
-        run: nix develop .#ci -c ./scripts/ci/pre-commit.sh
+  unit-test:
+    name: UnitTest
+    uses: ./.github/workflows/reusable-tests.yaml
+    secrets: inherit
+    with:
+      atomi_platform: carboxylic
+      atomi_service: boron
+      test_dir: UnitTest
+      target: Boron
 
-  test:
-    name: Tests
-    runs-on:
-      - nscloud-ubuntu-22.04-amd64-4x8-with-cache
-      - nscloud-cache-size-50gb
-      - nscloud-cache-tag-carboxylic-boron-test-cache
-      - nscloud-git-mirror-1gb
-    steps:
-      # Setup
-      - uses: AtomiCloud/actions.setup-nix@v2
-      - uses: AtomiCloud/actions.cache-nuget@v1
-
-      # Test
-      - name: Run Test
-        run: nix develop .#ci -c ./scripts/ci/test.sh
-
-  release:
-    name: Semantic Release
-    needs:
-      - precommit
-      - test
-
-    if: github.ref == 'refs/heads/main'
-    runs-on:
-      - nscloud-ubuntu-22.04-amd64-4x8-with-cache
-      - nscloud-cache-size-50gb
-      - nscloud-cache-tag-carboxylic-boron-releaser-nix-store-cache
-      - nscloud-git-mirror-1gb
-    steps:
-      # Setup
-      - uses: AtomiCloud/actions.setup-nix@v2
-        with:
-          auth-bot-app-id: ${{ vars.AUTH_BOT_APP_ID }}
-          auth-bot-secret-key: ${{ secrets.AUTH_BOT_SECRET_KEY }}
-      - uses: AtomiCloud/actions.cache-npm@v1
-      - uses: AtomiCloud/actions.cache-nuget@v1
-
-      # Release
-      - name: Release
-        env:
-          GITHUB_REPO_REF: ${{ github.repository }}
-          GITHUB_SHA: ${{ github.sha }}
-          GITHUB_BRANCH: ${{ env.GITHUB_REF_SLUG_URL }}
-
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-        run: nix develop .#releaser -c scripts/ci/release.sh
-      - name: Publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-        run: nix develop .#ci -c scripts/ci/publish.sh
+  int-test:
+    name: IntTest
+    uses: ./.github/workflows/reusable-tests.yaml
+    secrets: inherit
+    with:
+      atomi_platform: carboxylic
+      atomi_service: boron
+      test_dir: IntTest
+      target: Boron

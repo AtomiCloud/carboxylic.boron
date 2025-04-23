@@ -2,9 +2,9 @@
   "version": 1,
   "isRoot": true,
   "tools": {
-    "jetbrains.dotcover.globaltool": {
-      "version": "2023.2.5",
-      "commands": ["dotnet-dotcover"],
+    "dotnet-outdated-tool": {
+      "version": "4.6.8",
+      "commands": ["dotnet-outdated"],
       "rollForward": false
     }
   }
