@@ -3,65 +3,31 @@ name: CI
 on:
   push:
 
-env:
-  TARGETS: Boron
-
 jobs:
   precommit:
     name: Pre-Commit
-    runs-on:
-      - nscloud-ubuntu-22.04-amd64-4x8-with-cache
-      - nscloud-cache-size-50gb
-      - nscloud-cache-tag-carboxylic-boron-nix-store-cache
-      - nscloud-git-mirror-1gb
-    steps:
-      # Setup
-      - uses: AtomiCloud/actions.setup-nix@v2
-      - uses: AtomiCloud/actions.cache-nuget@v1
+    uses: ./.github/workflows/reusable-precommit.yaml
+    secrets: inherit
+    with:
+      atomi_platform: carboxylic
+      atomi_service: boron
 
-      # Pre Commit
-      - name: Run pre-commit
-        run: nix develop .#ci -c ./scripts/ci/pre-commit.sh
-
-  test:
+  unit-test:
     name: UnitTest
-    runs-on:
-      - nscloud-ubuntu-22.04-amd64-4x8-with-cache
-      - nscloud-cache-size-50gb
-      - nscloud-cache-tag-carboxylic-boron-unittest-test-cache
-      - nscloud-git-mirror-1gb
-    steps:
-      # Setup
-      - uses: AtomiCloud/actions.setup-nix@v2
-      - uses: AtomiCloud/actions.cache-nuget@v1
+    uses: ./.github/workflows/reusable-tests.yaml
+    secrets: inherit
+    with:
+      atomi_platform: carboxylic
+      atomi_service: boron
+      test_dir: UnitTest
+      target: Boron
 
-      # Test
-      - name: Run Test
-        run: nix develop .#ci -c ./scripts/ci/test.sh UnitTest
-
-  coverage:
-    name: UnitTest Coverage
-    runs-on:
-      - nscloud-ubuntu-22.04-amd64-4x8-with-cache
-      - nscloud-cache-size-50gb
-      - nscloud-cache-tag-carboxylic-boron-unittest-coverage-cache
-      - nscloud-git-mirror-1gb
-    steps:
-      # Setup
-      - uses: AtomiCloud/actions.setup-nix@v2
-      - uses: AtomiCloud/actions.cache-nuget@v1
-
-      # Coverage
-      - name: Get UnitTest Coverage
-        run: nix develop .#ci -c ./scripts/local/cover.sh UnitTest ${{ env.TARGETS }}
-
-      # Connect to Codecov
-      - name: Upload coverage reports to Codecov
-        if: ${{ always() }}
-        uses: codecov/codecov-action@v5
-        with:
-          fail_ci_if_error: true
-          verbose: true
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: coverage/UnitTest/coverage.cobertura.xml
-          flags: UnitTest
+  int-test:
+    name: IntTest
+    uses: ./.github/workflows/reusable-tests.yaml
+    secrets: inherit
+    with:
+      atomi_platform: carboxylic
+      atomi_service: boron
+      test_dir: IntTest
+      target: Boron
