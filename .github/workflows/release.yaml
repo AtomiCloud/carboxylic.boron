@@ -13,7 +13,7 @@ concurrency:
 jobs:
   release:
     name: Semantic Release
-    uses: AtomiCloud/ketone.nuget/.github/workflows/reusable-release.yaml@main
+    uses: ./.github/workflows/reusable-release.yaml
     secrets: inherit
     with:
       atomi_platform: carboxylic

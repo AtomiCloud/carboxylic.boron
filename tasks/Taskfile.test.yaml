@@ -14,4 +14,4 @@ tasks:
   cover:
     desc: '{{.TEST_DIR}} Test the library and show coverage'
     cmds:
-      - ./scripts/local/cover.sh {{.TEST_DIR}} {{.TARGET}} {{.CLI_ARGS}}
+      - ./scripts/cover.sh {{.TEST_DIR}} {{.TARGET}} {{.CLI_ARGS}}

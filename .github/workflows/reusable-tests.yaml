@@ -1,0 +1,59 @@
+name: Tests
+
+on:
+  workflow_call:
+    inputs:
+      atomi_platform:
+        required: true
+        type: string
+      atomi_service:
+        required: true
+        type: string
+      test_dir:
+        required: true
+        type: string
+      target:
+        required: true
+        type: string
+
+jobs:
+  test:
+    name: ${{ inputs.test_dir }}
+    runs-on:
+      - nscloud-ubuntu-22.04-amd64-4x8-with-cache
+      - nscloud-cache-size-50gb
+      - nscloud-cache-tag-${{ inputs.atomi_platform }}-${{ inputs.atomi_service }}-nix-store-cache
+    steps:
+      # Setup
+      - uses: AtomiCloud/actions.setup-nix@v2
+      - uses: AtomiCloud/actions.cache-nuget@v1
+
+      # Test
+      - name: Run Test
+        run: nix develop .#ci -c ./scripts/test.sh ${{ inputs.test_dir }}
+
+  coverage:
+    name: ${{ inputs.test_dir }} Coverage
+    runs-on:
+      - nscloud-ubuntu-22.04-amd64-4x8-with-cache
+      - nscloud-cache-size-50gb
+      - nscloud-cache-tag-${{ inputs.atomi_platform }}-${{ inputs.atomi_service }}-nix-store-cache
+    steps:
+      # Setup
+      - uses: AtomiCloud/actions.setup-nix@v2
+      - uses: AtomiCloud/actions.cache-nuget@v1
+
+      # Coverage
+      - name: Get ${{ inputs.test_dir }} Coverage
+        run: nix develop .#ci -c ./scripts/cover.sh ${{ inputs.test_dir }} ${{ inputs.target }}
+
+      # Connect to Codecov
+      - name: Upload coverage reports to Codecov
+        if: ${{ always() }}
+        uses: codecov/codecov-action@v5
+        with:
+          fail_ci_if_error: true
+          verbose: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/${{ inputs.test_dir }}/coverage.cobertura.xml
+          flags: ${{ inputs.test_dir }}

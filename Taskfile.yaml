@@ -21,7 +21,7 @@ tasks:
     cmds:
       - dotnet restore
       - dotnet tool restore
-      - ./scripts/local/secrets.sh
+      - ./scripts/secrets.sh
 
   build:
     desc: 'Build the library'

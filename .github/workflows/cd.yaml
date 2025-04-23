@@ -8,7 +8,7 @@ on:
 jobs:
   publish:
     name: Publish NuGet Package
-    uses: AtomiCloud/ketone.nuget/.github/workflows/reusable-cd.yaml@main
+    uses: ./.github/workflows/reusable-cd.yaml
     secrets: inherit
     with:
       atomi_platform: carboxylic
