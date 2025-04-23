@@ -8,7 +8,7 @@ on:
 jobs:
   publish:
     name: Publish NuGet Package
-    uses: AtomiCloud/ketone.nuget/.github/reusable/cd.yaml@main
+    uses: AtomiCloud/ketone.nuget/.github/workflows/reusable/cd.yaml@main
     with:
       atomi_platform: carboxylic
       atomi_service: boron
