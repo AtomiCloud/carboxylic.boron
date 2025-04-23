@@ -6,14 +6,14 @@ on:
 jobs:
   precommit:
     name: Pre-Commit
-    uses: AtomiCloud/ketone.nuget/.github/workflows/reusable/precommit.yaml@main
+    uses: AtomiCloud/ketone.nuget/.github/workflows/reusable-precommit.yaml@main
     with:
       atomi_platform: carboxylic
       atomi_service: boron
 
   unit-test:
     name: UnitTest
-    uses: AtomiCloud/ketone.nuget/.github/workflows/reusable/tests.yaml@main
+    uses: AtomiCloud/ketone.nuget/.github/workflows/reusable-tests.yaml@main
     with:
       atomi_platform: carboxylic
       atomi_service: boron
@@ -22,7 +22,7 @@ jobs:
 
   int-test:
     name: IntTest
-    uses: AtomiCloud/ketone.nuget/.github/workflows/reusable/tests.yaml@main
+    uses: AtomiCloud/ketone.nuget/.github/workflows/reusable-tests.yaml@main
     with:
       atomi_platform: carboxylic
       atomi_service: boron
