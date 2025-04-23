@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/AtomiCloud/carboxylic.boron/compare/v1.7.0...v1.7.1) (2025-04-23)
+
+
+### 🐛 Bug Fixes 🐛
+
+* missing lint for int test ([f24fa13](https://github.com/AtomiCloud/carboxylic.boron/commit/f24fa13261632f75111df293e853f926b1661271))
+
 ## [1.7.0](https://github.com/AtomiCloud/carboxylic.boron/compare/v1.6.0...v1.7.0) (2025-04-23)
 
 
