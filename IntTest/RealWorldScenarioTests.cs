@@ -15,50 +15,33 @@ public class RealWorldScenarioTests
     #region Domain Problems
 
     // Application-specific domain problems
-    private class ValidationProblem : IDomainProblem
+    private class ValidationProblem(string detail) : IDomainProblem
     {
         public string Id => "validation-error";
         public string Title => "Validation Error";
-        public string Detail { get; }
+        public string Detail { get; } = detail;
         public string Namespace => "app.validation";
-
-        public ValidationProblem(string detail)
-        {
-            Detail = detail;
-        }
     }
 
-    private class NotFoundProblem : IDomainProblem
+    private class NotFoundProblem(string resourceType, string resourceId) : IDomainProblem
     {
         public string Id => "resource-not-found";
         public string Title => "Resource Not Found";
-        public string Detail { get; }
+        public string Detail { get; } = $"{resourceType} with id '{resourceId}' was not found.";
         public string Namespace => "app.resources";
 
-        public string ResourceType { get; }
-        public string ResourceId { get; }
-
-        public NotFoundProblem(string resourceType, string resourceId)
-        {
-            ResourceType = resourceType;
-            ResourceId = resourceId;
-            Detail = $"{resourceType} with id '{resourceId}' was not found.";
-        }
+        public string ResourceType { get; } = resourceType;
+        public string ResourceId { get; } = resourceId;
     }
 
-    private class AuthorizationProblem : IDomainProblem
+    private class AuthorizationProblem(string requiredPermission) : IDomainProblem
     {
         public string Id => "authorization-error";
         public string Title => "Authorization Error";
         public string Detail => "You do not have permission to perform this action.";
         public string Namespace => "app.security";
 
-        public string RequiredPermission { get; }
-
-        public AuthorizationProblem(string requiredPermission)
-        {
-            RequiredPermission = requiredPermission;
-        }
+        public string RequiredPermission { get; } = requiredPermission;
     }
 
     #endregion

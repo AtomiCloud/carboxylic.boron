@@ -37,6 +37,16 @@ pre-commit-lib.run {
       files = "^UnitTest/.*\\.cs$";
     };
 
+    a-dotnet-lint-int-test = {
+      enable = true;
+      name = "Lint .NET 'Int Test' Project";
+      description = "Run formatter for .NET Project 'Int Test'";
+      entry = "${packages.dotnet}/bin/dotnet format style --no-restore --severity info --verify-no-changes -v d ./IntTest/IntTest.csproj";
+      language = "system";
+      pass_filenames = false;
+      files = "^IntTest/.*\\.cs$";
+    };
+
     a-infisical = {
       enable = true;
       name = "Secrets Scanning";
@@ -94,9 +104,5 @@ pre-commit-lib.run {
     };
   };
 
-  settings = {
-    treefmt = {
-      package = formatter;
-    };
-  };
+  settings.treefmt.package = formatter;
 }
