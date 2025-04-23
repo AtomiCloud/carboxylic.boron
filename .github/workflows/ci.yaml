@@ -6,7 +6,7 @@ on:
 jobs:
   precommit:
     name: Pre-Commit
-    uses: ./.github/workflows/reusable-precommit.yaml
+    uses: ./.github/workflows/⚡reusable-precommit.yaml
     secrets: inherit
     with:
       atomi_platform: carboxylic
@@ -14,7 +14,7 @@ jobs:
 
   unit-test:
     name: UnitTest
-    uses: ./.github/workflows/reusable-tests.yaml
+    uses: ./.github/workflows/⚡reusable-tests.yaml
     secrets: inherit
     with:
       atomi_platform: carboxylic
@@ -24,7 +24,7 @@ jobs:
 
   int-test:
     name: IntTest
-    uses: ./.github/workflows/reusable-tests.yaml
+    uses: ./.github/workflows/⚡reusable-tests.yaml
     secrets: inherit
     with:
       atomi_platform: carboxylic

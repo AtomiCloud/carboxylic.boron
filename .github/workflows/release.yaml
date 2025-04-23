@@ -13,7 +13,7 @@ concurrency:
 jobs:
   release:
     name: Semantic Release
-    uses: ./.github/workflows/reusable-release.yaml
+    uses: ./.github/workflows/⚡reusable-release.yaml
     secrets: inherit
     with:
       atomi_platform: carboxylic
