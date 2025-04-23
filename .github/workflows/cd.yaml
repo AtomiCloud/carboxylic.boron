@@ -9,6 +9,7 @@ jobs:
   publish:
     name: Publish NuGet Package
     uses: AtomiCloud/ketone.nuget/.github/workflows/reusable-cd.yaml@main
+    secrets: inherit
     with:
       atomi_platform: carboxylic
       atomi_service: boron

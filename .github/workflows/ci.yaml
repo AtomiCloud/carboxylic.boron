@@ -7,6 +7,7 @@ jobs:
   precommit:
     name: Pre-Commit
     uses: AtomiCloud/ketone.nuget/.github/workflows/reusable-precommit.yaml@main
+    secrets: inherit
     with:
       atomi_platform: carboxylic
       atomi_service: boron
@@ -14,6 +15,7 @@ jobs:
   unit-test:
     name: UnitTest
     uses: AtomiCloud/ketone.nuget/.github/workflows/reusable-tests.yaml@main
+    secrets: inherit
     with:
       atomi_platform: carboxylic
       atomi_service: boron
@@ -23,6 +25,7 @@ jobs:
   int-test:
     name: IntTest
     uses: AtomiCloud/ketone.nuget/.github/workflows/reusable-tests.yaml@main
+    secrets: inherit
     with:
       atomi_platform: carboxylic
       atomi_service: boron
