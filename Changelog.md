@@ -1,3 +1,10 @@
+## [1.7.0](https://github.com/AtomiCloud/carboxylic.boron/compare/v1.6.0...v1.7.0) (2025-04-23)
+
+
+### ✨ Features ✨
+
+* use emojiy to identify reusable workflows ([61effab](https://github.com/AtomiCloud/carboxylic.boron/commit/61effabca3700cbcbade14e2f6baf76eab3bd6ca))
+
 ## [1.6.0](https://github.com/AtomiCloud/carboxylic.boron/compare/v1.5.0...v1.6.0) (2025-04-23)
 
 
