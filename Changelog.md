@@ -1,3 +1,20 @@
+## [1.6.0](https://github.com/AtomiCloud/carboxylic.boron/compare/v1.5.0...v1.6.0) (2025-04-23)
+
+
+### ✨ Features ✨
+
+* use merge-gatekeeper ([d668ae4](https://github.com/AtomiCloud/carboxylic.boron/commit/d668ae477d34dd986ea0e3929ed14c1d364663c1))
+* **remote workflows:** use remote workflows for CI/CD ([e24e9d7](https://github.com/AtomiCloud/carboxylic.boron/commit/e24e9d74e3e34efaf25e04d5fe33e554eb114e38))
+
+
+### 🐛 Bug Fixes 🐛
+
+* incorrect reference to reusable workflow ([766b70f](https://github.com/AtomiCloud/carboxylic.boron/commit/766b70f6370134af15c20dd49c52e39729d21e8c))
+* incorrect reference to reusable workflow ([fe423a4](https://github.com/AtomiCloud/carboxylic.boron/commit/fe423a42b95d2723cebfb38622d33d6a4c8e3e65))
+* incorrect remote reference ([270cd69](https://github.com/AtomiCloud/carboxylic.boron/commit/270cd69a397dea078202d564e3a0482d0e740ff4))
+* incorrect version bump for releaser ([69c5c5d](https://github.com/AtomiCloud/carboxylic.boron/commit/69c5c5da843991fa7c5c91904e3bd26bea69a573))
+* reference self instead of remote actions ([d18cfc0](https://github.com/AtomiCloud/carboxylic.boron/commit/d18cfc04e5d60381a6ba2803c1e4d6263c08cdc4))
+
 ## [1.5.0](https://github.com/AtomiCloud/carboxylic.boron/compare/v1.4.0...v1.5.0) (2025-04-22)
 
 
